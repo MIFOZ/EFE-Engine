@@ -1,0 +1,1420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{1046c86e-da5b-4a30-98fe-eabac2f79e65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{06908a15-7f58-4a30-96d3-4a67cae488c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AI">
+      <UniqueIdentifier>{08f5c004-5bbd-4ba6-865f-ed21c7b8fbf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{11c1b552-d912-4daf-a3cd-96d04e7c2574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{ace4c815-b1aa-4200-83bd-c76b8ffcc270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Gui">
+      <UniqueIdentifier>{82e57710-57a6-4fc7-9ec4-4afc9ea0b70c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Input">
+      <UniqueIdentifier>{64008e04-1666-4669-b27a-629ea7a5f30f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{b7378a24-dcd1-4b33-98bb-2b50fc42b605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{b7cdde18-3a14-4f59-9706-e56d3e8dee35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl">
+      <UniqueIdentifier>{ae80fdde-e1e8-4502-9876-a5fee2f59b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Game">
+      <UniqueIdentifier>{935d7ed3-0879-41cf-adbc-48e110948858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Graphics">
+      <UniqueIdentifier>{4de2b5c5-a97d-4674-a852-0b9b79dd6229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Input">
+      <UniqueIdentifier>{40456956-42fc-40c4-9b2d-81960b06eaf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Resources">
+      <UniqueIdentifier>{a14cb388-0236-4cfe-9e72-95488bcb8fb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Sound">
+      <UniqueIdentifier>{028b42a4-0f5a-41ad-b51d-eead0651b721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\System">
+      <UniqueIdentifier>{c4dbf6dc-87a3-4a4c-81a9-afeb3ca7fe4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\TinyXml">
+      <UniqueIdentifier>{a2bd6017-5113-4704-b740-920c52a452cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Materials">
+      <UniqueIdentifier>{eecfb1b4-e1f4-4cf5-88a5-827e32bff163}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Materials\2d">
+      <UniqueIdentifier>{aa458078-f771-4f11-b6c4-acd5c8408ace}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sound">
+      <UniqueIdentifier>{bc6c7018-5f1b-43ff-9694-eb0753514257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Physics">
+      <UniqueIdentifier>{552afb9e-fae1-4e40-b64d-98cb76c79c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Haptic">
+      <UniqueIdentifier>{d9425f96-35b2-492e-90de-8b2bdb09a221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Graphics\PipelineSystem">
+      <UniqueIdentifier>{411a9999-346a-4f36-a484-9bd9abf65435}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Graphics\PipelineSystem\Fixed Stages">
+      <UniqueIdentifier>{86c438f5-cad5-4eaf-b795-2e56ab62bac5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Impl\Graphics\PipelineSystem\Programmable">
+      <UniqueIdentifier>{33ba8cf5-8969-4789-86f5-364a5c7318c3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="EFE Engine\sources\ai\AINodeGenerator.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\game\Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\game\SaveGame.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\game\Updater.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Camera3D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Entity.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Entity2D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Entity3D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\GridMap2D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Light.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Light3D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Light3DSpot.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\MeshEntity.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Node.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Node2D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Node3D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\PortalContainer.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Scene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\SectorVisibility.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\SubMeshEntity.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\World3D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\math\BoundingVolume.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\math\Frustum.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\math\Half.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\math\Math.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\math\MathTypes.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\math\Quaternion.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\BoneState.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Color.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\FontData.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\GfxObject.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\GPUProgram.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Graphics.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\GraphicsDrawer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Material.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\MaterialHandler.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Mesh.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Mesh2d.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\MeshCreator.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Renderable.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Renderer2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Renderer3D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\RenderList.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\RenderObject2D.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\RenderState.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\SubMesh.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\Gui.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\GuiGfxElement.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\GuiMaterialBasicTypes.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\GuiPopUp.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\GuiPopUpMessageBox.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\GuiSet.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\GuiSkin.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\Widget.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetButton.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetLabel.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetTextBox.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetWindow.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\Action.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\ActionKeyboard.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\ActionMouseButton.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\Input.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\InputDevice.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\Keyboard.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\Mouse.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\CharacterBody.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\Collider2D.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\Physics.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\PhysicsBody.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\PhysicsJoint.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\PhysicsWorld.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\SurfaceData.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\system\LogicTimer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\system\MemoryManager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\system\SerializeClass.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\system\String.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\system\System.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\D3D11GameSetup.cpp">
+      <Filter>Impl\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\DXFontData.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\KeyboardRaw.cpp">
+      <Filter>Impl\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\LowLevelInputRaw.cpp">
+      <Filter>Impl\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\MouseRaw.cpp">
+      <Filter>Impl\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\AnimationManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\FileSearcher.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\FontManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\FrameBitmap.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\FrameTexture.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\GpuProgramManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\ImageManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\MaterialManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\MeshLoaderHandler.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\MeshManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\ResourceBase.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\ResourceImage.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\ResourceManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\Resources.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\SoundManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\TextureManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\win32.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\tinyXML\tinystr.cpp">
+      <Filter>Impl\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\tinyXML\tinyxml.cpp">
+      <Filter>Impl\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\tinyXML\tinyxmlerror.cpp">
+      <Filter>Impl\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\tinyXML\tinyxmlparser.cpp">
+      <Filter>Impl\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Material_BaseLight.cpp">
+      <Filter>Graphics\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Material_Diffuse.cpp">
+      <Filter>Graphics\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Material_Fallback01_BaseLight.cpp">
+      <Filter>Graphics\Materials</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Material_FontNormal.cpp">
+      <Filter>Graphics\Materials\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\sound\Sound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\LowLevelResourcesDX.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\MeshLoaderCollada.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\MeshLoaderColladaHelpers.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\MeshLoaderColladaLoader.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\VideoManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\VideoStreamTheora.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\ConfigFile.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\BackgroundImage.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\World2D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\TileData.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\TileSet.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Camera2D.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\TileMap.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\TileSetManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\TileMapRectIt.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\ImageEntity.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\TileLayer.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Tile.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\AScript.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\ScriptManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\scripthelper.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\scriptstdstring.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\scriptbuilder.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\game\ScriptFunc.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\ai\AI.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetSlider.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetBaseClasses.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetListBox.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetComboBox.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetImage.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetFrame.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\gui\WidgetCheckBox.cpp">
+      <Filter>Gui</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Light3DPoint.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Material_Diffuse2D.cpp">
+      <Filter>Graphics\Materials\2d</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\LowLevelSoundOpenAL.cpp">
+      <Filter>Impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\OpenALSoundEnvironment.cpp">
+      <Filter>Impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\SoundEntityManager.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\sound\SoundHandler.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\SoundEntity.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\OpenALSoundChannel.cpp">
+      <Filter>Impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\sound\SoundEntityData.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\sound\LowLevelSound.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\OpenALSoundData.cpp">
+      <Filter>Impl\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\sound\MusicHandler.cpp">
+      <Filter>Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\AnimationTrack.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Animation.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\AnimationState.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Bone.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\LowLevelPhysicsNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\PhysicsWorldNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\PhysicsMaterialNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\PhysicsBodyNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\CharacterBodyNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\CollideShapeNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\PhysicsController.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\PhysicsJointBall.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\PhysicsJointBallNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\PhysicsControllerNewton.cpp">
+      <Filter>Impl\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\Skeleton.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\resources\EntityLoader_Object.cpp">
+      <Filter>Impl\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\input\Joystick.cpp">
+      <Filter>Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\JoystickRaw.cpp">
+      <Filter>Impl\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\haptic\Haptic.cpp">
+      <Filter>Haptic</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\ColliderEntity.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\game\GameTypes.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\LowLevelSystemWin.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\physics\PhysicsTerrain.cpp">
+      <Filter>Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\scene\Terrain.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\DX11Texture.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\DX11Program.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\DX11Bitmap2D.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\DX11VertexBuffer.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\LowLevelGraphicsDX11.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\haptic\LowLevelHaptic.cpp">
+      <Filter>Haptic</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\GpuProgramParameterManager.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\GpuProgramParameter.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\DX11ProgramBuffer.cpp">
+      <Filter>Impl\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\RenderTask.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11OutputMergerStageState.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\DX11PipelineManager.cpp">
+      <Filter>Impl\Graphics\PipelineSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11OutputMergerStage.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Programmable\DX11ProgramStage.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Programmable</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Programmable\DX11ProgramStageState.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Programmable</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11InputAssemblerStageState.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11InputAssemblerStage.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11RasterizerStageState.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11RasterizerStage.cpp">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\MaterialRenderEffect.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\graphics\GpuParameterContainer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="EFE Engine\include\game\Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\game\GameTypes.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\game\LowLevelGameSetup.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\game\SaveGame.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\game\Updateable.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\game\Updater.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\ai\AI.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\ai\AINodeGenerator.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Camera.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Camera3D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Entity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Entity2D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Entity3D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\GridMap2D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Light.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Light2D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Light3D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Light3DSpot.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\MeshEntity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Node.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Node2D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Node3D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\NodeState.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\PortalContainer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\RenderableContainer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Scene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\SectorVisibility.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\SubMeshEntity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Tile.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\TileData.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\World3D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\BoundingVolume.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Frustum.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Half.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Math.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\MathTypes.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\MeshTypes.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Point.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Vector2.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Vector3.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\BackgroundImage.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Bitmap2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Bone.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\BoneState.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Color.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\FontData.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GfxObject.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GPUProgram.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Graphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GraphicsDrawer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GraphicsTypes.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\LowLevelGraphics.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\LowLevelPicture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Material.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\MaterialHandler.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Mesh.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Mesh2d.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\MeshCreator.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\PixelFormat.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Renderable.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Renderer2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Renderer3D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\RenderList.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\RenderObject2D.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\RenderState.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Skeleton.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\SubMesh.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\VertexBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\Gui.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiGfxElement.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiMaterial.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiMaterialBasicTypes.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiPopUp.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiPopUpMessageBox.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiSet.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiSkin.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\GuiTypes.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\Widget.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetButton.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetLabel.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetTextBox.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetWindow.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\Action.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\ActionKeyboard.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\ActionMouseButton.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\Input.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\InputDevice.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\InputTypes.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\Keyboard.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\LowLevelInput.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\Mouse.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\Body2D.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\CharacterBody.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\CollideData.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\CollideData2D.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\Collider2D.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\CollideShape.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\LowLevelPhysics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\Physics.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsBody.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsJoint.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsMaterial.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsWorld.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\SurfaceData.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\BinTree.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\Container.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\LogicTimer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\LowLevelSystem.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\MemoryManager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\SerializeClass.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\String.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\System.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\SystemTypes.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\EFE.h" />
+    <ClInclude Include="EFE Engine\include\graphics\Material_BaseLight.h">
+      <Filter>Graphics\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Material_Diffuse.h">
+      <Filter>Graphics\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Material_Fallback01_BaseLight.h">
+      <Filter>Graphics\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Material_FontNormal.h">
+      <Filter>Graphics\Materials\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\D3D11GameSetup.h">
+      <Filter>Impl\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\DXFontData.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\KeyboardRaw.h">
+      <Filter>Impl\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\LowLevelInputRaw.h">
+      <Filter>Impl\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\MouseRaw.h">
+      <Filter>Impl\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\tinyXML\tinystr.h">
+      <Filter>Impl\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\tinyXML\tinyxml.h">
+      <Filter>Impl\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\Platform.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\AnimationManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\FileSearcher.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\FontManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\FrameBase.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\FrameBitmap.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\FrameTexture.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\GpuProgramManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\ImageManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\LowLevelResources.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\MaterialManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\MeshLoader.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\MeshLoaderHandler.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\MeshManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\ResourceBase.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\ResourceImage.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\ResourceManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\Resources.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\SoundManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\TextureManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\LowLevelSound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\Sound.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\SoundChannel.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\SoundData.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\LowLevelResourcesDX.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\MeshLoaderCollada.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\VideoManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\VideoStream.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\VideoStreamTheora.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\ConfigFile.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Camera2D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\World2D.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\TileMap.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\TileSet.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\TileLayer.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\TileMapRectIt.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\TileMapIt.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\TileSetManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\ImageEntity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\Script.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\AScript.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\ScriptManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\scripthelper.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\scriptstdstring.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\scriptbuilder.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\game\ScriptFunc.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Material_Bump.h">
+      <Filter>Graphics\Materials</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetSlider.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetListBox.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetBaseClasses.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetComboBox.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetImage.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetFrame.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\gui\WidgetCheckBox.h">
+      <Filter>Gui</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Light3DPoint.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Material_Diffuse2D.h">
+      <Filter>Graphics\Materials\2d</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\OpenALSoundData.h">
+      <Filter>Impl\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\SoundEnvironment.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\OpenALSoundEnvironment.h">
+      <Filter>Impl\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\SoundEntityManager.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\SoundEntityData.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\SoundHandler.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\SoundEntity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenALSoundChannels.h">
+      <Filter>Impl\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\OpenALSoundChannel.h">
+      <Filter>Impl\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\LowLevelSoundOpenAL.h">
+      <Filter>Impl\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\sound\MusicHandler.h">
+      <Filter>Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\Animation.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\AnimationTrack.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\AnimationState.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\LowLevelPhysicsNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\PhysicsWorldNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\PhysicsMaterialNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\PhysicsBodyNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\CollideShapeNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\CharacterBodyNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsController.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsJointBall.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\PhysicsJointBallNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\PhysicsJointNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\PhysicsControllerNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\PidController.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\resources\EntityLoader_Object.h">
+      <Filter>Impl\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\input\Joystick.h">
+      <Filter>Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\JoystickRaw.h">
+      <Filter>Impl\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\haptic\HapticTypes.h">
+      <Filter>Haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\haptic\Haptic.h">
+      <Filter>Haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\haptic\LowLevelHaptic.h">
+      <Filter>Haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\ColliderEntity.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\LowLevelSystemWin.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\Terrain.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\physics\PhysicsTerrain.h">
+      <Filter>Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\sources\impl\TerrainShapeNewton.h">
+      <Filter>Impl\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\DX11Texture.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\DX11Program.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\DX11Bitmap2D.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\DX11VertexBuffer.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\LowLevelGraphicsDX11.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\haptic\HapticSurface.h">
+      <Filter>Haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\haptic\HapticShape.h">
+      <Filter>Haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\haptic\HapticForce.h">
+      <Filter>Haptic</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GpuProgramParameterManager.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GpuProgramParameter.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\math\Vector4.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GpuProgramBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\DX11ProgramBuffer.h">
+      <Filter>Impl\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\RenderTask.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\system\StateMonitor.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\DX11PipelineManager.h">
+      <Filter>Impl\Graphics\PipelineSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11OutputMergerStageState.h">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11OutputMergerStage.h">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Programmable\DX11ProgramStage.h">
+      <Filter>Impl\Graphics\PipelineSystem\Programmable</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Programmable\DX11ProgramStageState.h">
+      <Filter>Impl\Graphics\PipelineSystem\Programmable</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11InputAssemblerStageState.h">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11InputAssemblerStage.h">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11RasterizerStageState.h">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\RenderPipelineSystem\RenderStages\Fixed Stages\DX11RasterizerStage.h">
+      <Filter>Impl\Graphics\PipelineSystem\Fixed Stages</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\MaterialRenderEffect.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\scene\ParameterWriter.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\sources\scene\ParameterWriter.cpp">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\graphics\GpuParameterContainer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

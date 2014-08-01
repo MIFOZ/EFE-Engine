@@ -1,0 +1,7 @@
+﻿<Material>
+	<Main Type="Diffuse"/>
+	<TextureUnits>
+		<Diffuse File="floor_grate01.bmp" Type ="2D" Mipmaps="true" Compress="false" AddressMode="Repeat"/>
+    <NMap File="bump_flat.bmp" Compress="false" Type="2D" Mipmaps="true" Wrap="Repeat" />
+	</TextureUnits>
+</Material>
