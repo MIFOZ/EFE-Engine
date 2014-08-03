@@ -392,7 +392,7 @@ namespace efe
 
 		if (fCos < 0.0f && a_bShortestpath)
 		{
-			fCoeff0 =- fCoeff0;
+			fCoeff0 = -fCoeff0;
 			cQuaternion qT(a_qA * fCoeff0 + a_qB * fCoeff1);
 			qT.Normalize();
 			return qT;

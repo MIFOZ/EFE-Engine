@@ -55,6 +55,14 @@ namespace efe
 		void SetSource(const tString &a_sSource);
 		const char *GetSource();
 
+		//************************************
+		// Method:    UpdateMatrix
+		// FullName:  efe::cNode3D::UpdateMatrix
+		// Access:    public 
+		// Returns:   void
+		// Qualifier: Updates the matrix with added scales, translations, rotations. It also resets these values.
+		// Parameter: bool a_bSetChildrenUpdated
+		//************************************
 		void UpdateMatrix(bool a_bSetChildrenUpdated);
 
 		void SetParent(cNode3D *a_pNode);

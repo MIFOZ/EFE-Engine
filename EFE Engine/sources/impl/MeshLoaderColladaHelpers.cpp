@@ -86,6 +86,7 @@ namespace efe
 	class cTempAnimData
 	{
 	public:
+		cTempAnimData() : m_vTrans(0, 0, 0), m_vRot(0, 0, 0), m_vScale(1, 1, 1) {}
 
 		cVector3f m_vTrans;
 		cVector3f m_vRot;

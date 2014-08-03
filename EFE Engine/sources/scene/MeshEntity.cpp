@@ -18,6 +18,7 @@
 #include "scene/AnimationState.h"
 #include "scene/Scene.h"
 #include "scene/World3D.h"
+#include "scene/SoundEntity.h"
 
 #include "physics/PhysicsBody.h"
 #include "physics/PhysicsWorld.h"
@@ -400,6 +401,11 @@ namespace efe
 
 	//--------------------------------------------------------------
 
+	cNode3D *cMeshEntity::GetNodeState(int a_lIndex)
+	{
+		return m_vNodeStates[a_lIndex];
+	}
+
 	int cMeshEntity::GetNodeStateIndex(const tString &a_sName)
 	{
 		tNodeStateIndexMapIt it = m_mapNodeStateIndices.find(a_sName);
@@ -519,6 +525,64 @@ namespace efe
 
 		if (m_bHasNodes)
 		{
+			//Reset all node states to prepare for animations.
+			if (m_vAnimationStates.size() > 0)
+			{
+				for (size_t i=0; i<m_vNodeStates.size(); i++)
+				{
+					cNode3D *pState = m_vNodeStates[i];
+					if (pState->IsActive()) pState->SetMatrix(cMatrixf::Identity);
+				}
+			}
+
+			//Go through all animation states and set the node's temporary states
+			bool bAnimated = false;
+			for (size_t i=0; i<m_vAnimationStates.size(); i++)
+			{
+				cAnimationState *pAnimState = m_vAnimationStates[i];
+				if (pAnimState->IsActive())
+				{
+					bAnimated = true;
+
+					cAnimation *pAnim = pAnimState->GetAnimation();
+
+					for (int j=0; j<pAnim->GetTrackNum(); j++)
+					{
+						cAnimationTrack *pTrack = pAnim->GetTrack(j);
+
+						if (pTrack->GetNodeIndex() < 0)
+						{
+							pTrack->SetNodeIndex(GetNodeStateIndex(pTrack->GetName()));
+						}
+						cNode3D *pNodeState = GetNodeState(pTrack->GetNodeIndex());
+
+						if (pNodeState->IsActive())
+							pTrack->ApplyToNode(pNodeState, pAnimState->GetTimePosition(), pAnimState->GetWeight());
+					}
+
+					pAnimState->Update(a_fTimeStep);
+				}
+			}
+
+			//Go through all states and update the matrices (and thereby adding the animations together)
+			if (m_vAnimationStates.size()>0 && bAnimated)
+			{
+				cNodeIterator NodeIt = m_pRootNode->GetChildIterator();
+				while (NodeIt.HasNext())
+				{
+					cNode3D *pBoneState = static_cast<cNode3D*>(NodeIt.Next());
+
+					UpdateNodeMatrixRec(m_pRootNode->GetWorldMatrix(), pBoneState);
+				}
+			}
+
+			//Call callback to be run after animation
+			if (m_pCallback) m_pCallback->AfterAnimationUpdate(this, a_fTimeStep);
+
+			UpdateBVFromSubs();
+
+			SetTransformUpdated(true);
+
 		}
 		else if (m_pMesh->GetSkeleton())
 		{
@@ -529,6 +593,25 @@ namespace efe
 			cSubMeshEntity *pSub = m_vSubMeshes[i];
 
 			pSub->UpdateLogic(a_fTimeStep);
+		}
+
+		// Update animation events
+		for (size_t i=0; i<m_vAnimationStates.size(); i++)
+		{
+			cAnimationState *pState = m_vAnimationStates[i];
+
+			if (pState->IsActive() == false || pState->IsPaused()) continue;
+
+			for (int j=0; j<pState->GetEventNum(); j++)
+			{
+				cAnimationEvent *pEvent = pState->GetEvent(j);
+
+				if (pEvent->m_fTime >= pState->GetPreviousTimePosition() &&
+					pEvent->m_fTime < pState->GetTimePosition())
+				{
+					HandleAnimationEvent(pEvent);
+				}
+			}
 		}
 	}
 
@@ -591,6 +674,60 @@ namespace efe
 	{
 		return eRenderableType_Mesh;
 	}
+
+	//--------------------------------------------------------------
+
+	void cMeshEntity::UpdateNodeMatrixRec(const cMatrixf &a_mtxParentWorld, cNode3D *a_pNode)
+	{
+		if (a_pNode->IsActive())
+		{
+			a_pNode->UpdateMatrix(false);
+		}
+
+		a_pNode->UpdateWorldTransform();
+		const cMatrixf &mtxWorld = a_pNode->GetWorldMatrix();
+
+		cNodeIterator NodeIt = a_pNode->GetChildIterator();
+		while (NodeIt.HasNext())
+		{
+			cNode3D *pChildNode = static_cast<cNode3D*>(NodeIt.Next());
+
+			UpdateNodeMatrixRec(mtxWorld, pChildNode);
+		}
+	}
+
+	//--------------------------------------------------------------
+
+	void cMeshEntity::HandleAnimationEvent(cAnimationEvent *a_pEvent)
+	{
+		if (a_pEvent->m_sValue == "") return;
+
+		switch (a_pEvent->m_Type)
+		{
+		case eAnimationEventType_PlaySound:
+			{
+				cSoundEntity *pSound = m_pWorld->CreateSoundEntity("AnimEvent", a_pEvent->m_sValue, true);
+				if (pSound)
+				{
+					cNodeIterator NodeIt = m_pRootNode->GetChildIterator();
+					if (NodeIt.HasNext())
+					{
+						iNode *pNode = NodeIt.Next();
+						pNode->AddEntity(pSound);
+					}
+					else
+					{
+						pSound->SetPosition(m_BoundingVolume.GetWorldCenter());
+					}
+				}
+				break;
+			}
+		default:
+			break;
+		}
+	}
+
+	//--------------------------------------------------------------
 
 	void cMeshEntity::UpdateBVFromSubs()
 	{

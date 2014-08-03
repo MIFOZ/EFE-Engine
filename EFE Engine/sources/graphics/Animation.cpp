@@ -80,7 +80,7 @@ namespace efe
 
 	void cAnimation::ResizeTracks(int a_lNum)
 	{
-		m_vTracks.resize(a_lNum);
+		m_vTracks.reserve(a_lNum);
 	}
 
 	//--------------------------------------------------------------

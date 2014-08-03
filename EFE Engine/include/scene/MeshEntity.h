@@ -12,6 +12,8 @@
 
 #include "scene/SubMeshEntity.h"
 
+#include "scene/AnimationState.h"
+
 namespace efe
 {
 	class cMaterialManager;
@@ -21,7 +23,6 @@ namespace efe
 	class cSubMesh;
 	class cSubMeshEntity;
 	class cAnimation;
-	class cAnimationState;
 	class cNodeState;
 	class cBone;
 	class cNode3D;
@@ -141,6 +142,8 @@ namespace efe
 		virtual iSaveData *CreateSaveData(); 
 	private:
 		void UpdateNodeMatrixRec(const cMatrixf &a_mtxParentWorld, cNode3D *a_pNode);
+
+		void HandleAnimationEvent(cAnimationEvent *a_pEvent);
 
 		void UpdateBVFromSubs();
 

@@ -22,7 +22,7 @@ namespace efe
 		v.z = a_fZ;
 	}
 
-	const cQuaternion cQuaternion::Identity = cQuaternion(1.0f, 1.0f, 1.0f, 1.0f);
+	const cQuaternion cQuaternion::Identity = cQuaternion(1.0f, 0.0f, 0.0f, 0.0f);
 
 	void cQuaternion::Normalize()
 	{

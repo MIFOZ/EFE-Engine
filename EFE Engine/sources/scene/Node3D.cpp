@@ -132,6 +132,24 @@ namespace efe
 
 	//--------------------------------------------------------------
 
+	void cNode3D::UpdateMatrix(bool a_bSetChildrenUpdated)
+	{
+		cMatrixf mtxTransform = GetLocalMatrix();
+
+		cVector3f vPos = mtxTransform.GetTranslation();
+		mtxTransform.SetTranslation(cVector3f(0,0,0));
+
+		mtxTransform = cMath::MatrixMul(mtxTransform, m_mtxRotation);
+
+		mtxTransform.SetTranslation(vPos + m_vTranslation);
+
+		SetMatrix(mtxTransform, a_bSetChildrenUpdated);
+
+		m_mtxRotation = cMatrixf::Identity;
+		m_vScale = cVector3f(1,1,1);
+		m_vTranslation = cVector3f(0);
+	}
+
 	void cNode3D::SetParent(cNode3D *a_pNode)
 	{
 		m_pParent = a_pNode;
