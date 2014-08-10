@@ -376,7 +376,7 @@ namespace efe
 	//--------------------------------------------------------------
 
 	cQuaternion cMath::QuaternionSlerp(float a_fT, const cQuaternion &a_qA, const cQuaternion &a_qB,
-			bool a_bShortestpath)
+			bool a_bShortestPath)
 	{
 		float fCos = QuaternionDot(a_qA, a_qB);
 
@@ -390,7 +390,7 @@ namespace efe
 		float fCoeff0 = sin((1.0f-a_fT)*fAngle)*fInvSin;
 		float fCoeff1 = sin(a_fT*fAngle)*fInvSin;
 
-		if (fCos < 0.0f && a_bShortestpath)
+		if (fCos < 0.0f && a_bShortestPath)
 		{
 			fCoeff0 = -fCoeff0;
 			cQuaternion qT(a_qA * fCoeff0 + a_qB * fCoeff1);

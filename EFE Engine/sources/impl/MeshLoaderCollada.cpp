@@ -409,11 +409,14 @@ namespace efe
 			pAnimation = efeNew(cAnimation, (pMesh->GetName(), cString::GetFileName(a_sFile)));
 
 			pAnimation->SetAnimationName("Default");
-			pAnimation->SetLength(ColladaScene.m_fDeltaTime);
+			bool bDeltaEqualsNull = ColladaScene.m_fDeltaTime == 0.0f;
+			if (!bDeltaEqualsNull)
+				pAnimation->SetLength(ColladaScene.m_fDeltaTime);
 			pAnimation->ResizeTracks((int)vColladaAnimations.size());
 
 			pMesh->AddAnimation(pAnimation);
 
+			float fMaxAnimLength = -1.0f;
 			for (size_t i=0; i<vColladaAnimations.size(); i++)
 			{
 				cAnimationTrack *pTrack = CreateAnimTrack(pAnimation, pSkeleton,
@@ -427,7 +430,13 @@ namespace efe
 				}
 				else
 					pTrack->SetNodeIndex(-1);
+
+				float fLength = pTrack->GetKeyFrame(pTrack->GetKeyFrameNum()-1)->time - pTrack->GetKeyFrame(0)->time;
+				if (fLength > fMaxAnimLength)
+					fMaxAnimLength = fLength;
 			}
+			if (bDeltaEqualsNull)
+				pAnimation->SetLength(fMaxAnimLength);
 
 			if (pSkeleton)
 			{

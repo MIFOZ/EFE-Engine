@@ -45,28 +45,41 @@ namespace efe
 	//--------------------------------------------------------------
 
 	iVertexBuffer *cMeshLoaderCollada::CreateVertexBuffer(cColladaGeometry &a_Geometry,
-											eVertexBufferUsageType a_UsageType)
+		eVertexBufferUsageType a_UsageType)
 	{
-		iVertexBuffer *pVtxBuffer = m_pLowLevelGraphics->CreateVertexBuffer(
-			eVertexFlag_Position | eVertexFlag_Normal | eVertexFlag_Texture0 | eVertexFlag_Color0 |
-			eVertexFlag_Tangent,
+		tVertexFlag Flags = eVertexFlag_Position | eVertexFlag_Normal | eVertexFlag_Color0;
+		bool bHasTexCoords = false;
+		if (a_Geometry.m_lTexIdxNum != -1)
+		{
+			Flags |= (eVertexFlag_Texture0 | eVertexFlag_Tangent);
+			bHasTexCoords = true;
+		}
+		iVertexBuffer *pVtxBuffer = m_pLowLevelGraphics->CreateVertexBuffer(Flags,
 			eVertexBufferDrawType_TriangleList, a_UsageType,
 			(int)a_Geometry.m_vVertexVec.size(), (int)a_Geometry.m_vIndexVec.size());
 
-		pVtxBuffer->SetTangents(true);
-		pVtxBuffer->ResizeArray(eVertexFlag_Tangent, (int)a_Geometry.m_vTangents.size());
+		if (bHasTexCoords)
+		{
+			pVtxBuffer->SetTangents(true);
+			pVtxBuffer->ResizeArray(eVertexFlag_Tangent, (int)a_Geometry.m_vTangents.size());
+		}
 
 		for (size_t j = 0; j < a_Geometry.m_vVertexVec.size(); j++)
 		{
 			pVtxBuffer->AddVertex(eVertexFlag_Position, a_Geometry.m_vVertexVec[j].pos);
 			pVtxBuffer->AddVertex(eVertexFlag_Normal, a_Geometry.m_vVertexVec[j].norm);
-			pVtxBuffer->AddVertex(eVertexFlag_Texture0, a_Geometry.m_vVertexVec[j].tex);
+
+			if (bHasTexCoords)
+				pVtxBuffer->AddVertex(eVertexFlag_Texture0, a_Geometry.m_vVertexVec[j].tex);
 
 			pVtxBuffer->AddColor(eVertexFlag_Color0, cColor(1,1));
 		}
 
-		memcpy(pVtxBuffer->GetArray(eVertexFlag_Tangent), &a_Geometry.m_vTangents[0],
+		if (bHasTexCoords)
+		{
+			memcpy(pVtxBuffer->GetArray(eVertexFlag_Tangent), &a_Geometry.m_vTangents[0],
 				a_Geometry.m_vTangents.size()*sizeof(float));
+		}
 
 		for (size_t j = 0; j < a_Geometry.m_vIndexVec.size(); j++)
 		{
@@ -91,6 +104,11 @@ namespace efe
 		cVector3f m_vTrans;
 		cVector3f m_vRot;
 		cVector3f m_vScale;
+		eKeyFrameType m_InterpolationType;
+
+		cVector2f m_vOutAnchor;
+		cVector2f m_vInAnchor;
+
 		float m_fTime;
 
 		int m_lIndex;
@@ -113,7 +131,7 @@ namespace efe
 
 	static void GetAnimTimes(float a_fTime, float *a_pTimeBefore, float *a_pTimeAfter, tFloatVec *a_pTimeVec)
 	{
-	 	*a_pTimeBefore = -1; *a_pTimeAfter = -1;
+		*a_pTimeBefore = -1; *a_pTimeAfter = -1;
 		for (size_t i=0; i<a_pTimeVec->size(); ++i)
 		{
 			float fTime = (*a_pTimeVec)[i];
@@ -126,10 +144,22 @@ namespace efe
 
 	}
 
-	//--------------------------------------------------------------
+	static eKeyFrameType GetKeyFrameTypeEnumFromString(const tString &a_sType)
+	{
+		tString sLow = cString::ToLowerCase(a_sType);
+		if (sLow == "linear")		return eKeyFrameType_Linear;
+		else if (sLow == "bezier")	return eKeyFrameType_Bezier;
+		else						return eKeyFrameType_Linear;
+	}
+
+	static void GetBezierAnchorPoints(int a_lIndex, tFloatVec *a_pInTangents, tFloatVec *a_pOutTangents, cVector2f *a_pOut, cVector2f *a_pIn)
+	{
+		*a_pOut = (*a_pOutTangents)[a_lIndex];
+		*a_pIn = (*a_pInTangents)[a_lIndex+1];
+	}
 
 	cAnimationTrack *cMeshLoaderCollada::CreateAnimTrack(cAnimation *a_pAnimation, cSkeleton *a_pSkeleton,
-			cColladaAnimation &a_Anim, cColladaScene *a_pScene)
+		cColladaAnimation &a_Anim, cColladaScene *a_pScene)
 	{
 		tTempAnimDataVec vTempData;
 		tTempTimesSet setTempTimes;
@@ -192,6 +222,12 @@ namespace efe
 			tString sTarget = cString::SetFileExt(cString::GetFileName(Sampler.m_sTarget),"");
 			tString sExt = cString::ToLowerCase(cString::GetFileExt(Sampler.m_sTarget));
 
+			if (m_bZToY)
+			{
+				if (sExt == "z") sExt = "y";
+				else if (sExt == "y") sExt = "z";
+			}
+
 			cColladaTransform *pTrans = pNode->GetTransform(sTarget);
 			if (pTrans == NULL)
 				continue;
@@ -202,6 +238,9 @@ namespace efe
 				Error("Value array not found!\n");
 				return NULL;
 			}
+			tStringVec *pInterpolations = a_Anim.GetInterpolationVec(Sampler.m_sInterpolationArray);
+			tFloatVec *pInTangents = a_Anim.GetSourceVec(Sampler.m_sInTangentArray);
+			tFloatVec *pOutTangents = a_Anim.GetSourceVec(Sampler.m_sOutTangentArray);
 
 			if (pTrans->m_sType == "translate")
 			{
@@ -233,6 +272,15 @@ namespace efe
 
 					if (pBone)
 						pTempData->m_vTrans -= pBone->GetLocalTransform().GetTranslation();
+
+					// Interpolation
+					pTempData->m_InterpolationType = GetKeyFrameTypeEnumFromString((*pInterpolations)[j]);
+					// Add anchor data
+					if (pTempData->m_InterpolationType == eKeyFrameType_Bezier)
+					{
+						pTempData->m_vOutAnchor = cVector2f((*pOutTangents)[j*2 + 0], (*pOutTangents)[j*2 + 1]);
+						pTempData->m_vInAnchor = cVector2f((*pInTangents)[j*2 + 0], (*pInTangents)[j*2 + 1]);
+					}
 				}
 
 				float fTimeBefore = -1, fTimeAfter = -1;
@@ -313,36 +361,40 @@ namespace efe
 					}
 				}
 			}
-
-			cAnimationTrack *pTrack = a_pAnimation->CreateTrack(a_Anim.m_sTargetNode,
-				eAnimTransformFlag_Rotate |
-				eAnimTransformFlag_Translate |
-				eAnimTransformFlag_Scale);
-
-			for (size_t i=0; i<vTempData.size(); i++)
-			{
-				cKeyFrame *pFrame = pTrack->CreateKeyFrame(vTempData[i].m_fTime - a_pScene->m_fStartTime);
-
-				pFrame->trans = vTempData[i].m_vTrans;
-				pFrame->scale = vTempData[i].m_vScale;
-
-				cVector3f vRadRot = vTempData[i].m_vRot;
-				vRadRot = cVector3f(cMath::ToRad(vRadRot.x), cMath::ToRad(vRadRot.y), cMath::ToRad(vRadRot.z));
-				cMatrixf mtxRot = cMath::MatrixRotate(vRadRot, eEulerRotationOrder_XYZ);
-				cQuaternion qRot;
-				qRot.FromRotationMatrix(mtxRot);
-
-				pFrame->rotation = qRot;
-			}
-
-			return pTrack;
 		}
+
+		cAnimationTrack *pTrack = a_pAnimation->CreateTrack(a_Anim.m_sTargetNode,
+			eAnimTransformFlag_Rotate |
+			eAnimTransformFlag_Translate |
+			eAnimTransformFlag_Scale);
+
+		for (size_t i=0; i<vTempData.size(); i++)
+		{
+			cKeyFrame *pFrame = pTrack->CreateKeyFrame(vTempData[i].m_fTime - a_pScene->m_fStartTime);
+
+			pFrame->trans = vTempData[i].m_vTrans;
+			pFrame->scale = vTempData[i].m_vScale;
+
+			cVector3f vRadRot = vTempData[i].m_vRot;
+			vRadRot = cVector3f(cMath::ToRad(vRadRot.x), cMath::ToRad(vRadRot.y), cMath::ToRad(vRadRot.z));
+			cMatrixf mtxRot = cMath::MatrixRotate(vRadRot, eEulerRotationOrder_XYZ);
+			cQuaternion qRot;
+			qRot.FromRotationMatrix(mtxRot);
+
+			pFrame->rotation = qRot;
+
+			pFrame->type = vTempData[i].m_InterpolationType;
+			pFrame->outAnchor = vTempData[i].m_vOutAnchor;
+			pFrame->inAnchor = vTempData[i].m_vInAnchor;
+		}
+
+		return pTrack;
 	}
 
 	//--------------------------------------------------------------
 
 	void cMeshLoaderCollada::LoadColladaScene(TiXmlElement *a_pRootElem, cColladaNode *a_pParentNode, cColladaScene *a_pScene,
-								tColladaLightVec *a_pColladaLightVec)
+		tColladaLightVec *a_pColladaLightVec)
 	{
 		cColladaNode *pNode = a_pParentNode->CreateChild();
 		a_pScene->m_lstNodes.push_back(pNode);
@@ -412,7 +464,7 @@ namespace efe
 			//Rotation
 			if (sVal=="rotation")
 			{
-				
+
 				cQuaternion qRot;
 				cVector3f vRotAxis = GetVectorPosFromPtr(&vValVec[0]);
 
@@ -423,7 +475,7 @@ namespace efe
 			//Scaling
 			else if(sVal=="scale")
 			{
-				
+
 			}
 
 			pNode->m_lstTransforms.push_back(cColladaTransform());
@@ -699,10 +751,12 @@ namespace efe
 				Warning("No normals for geometry '%s'\n", Geometry.m_sName.c_str());
 				continue;
 			}
+			bool bHasTexCoords = true;
 			if (Geometry.m_lTexArrayIdx<0 && Geometry.m_sName[0] != '_')
 			{
 				Warning("No tex coords for geometry '%s'\n", Geometry.m_sName.c_str());
-				continue;
+				bHasTexCoords = false;
+				//continue;
 			}
 
 			if (m_bZToY)
@@ -711,7 +765,7 @@ namespace efe
 				tVector3fVec &vVtxVec = Geometry.m_vArrayVec[Geometry.m_lPosArrayIdx].m_vArray;
 				for (int i = 0;i < (int)vVtxVec.size();i++)
 					vVtxVec[i] = GetVectorPos(vVtxVec[i]);
-					
+
 				//Normals
 				tVector3fVec &vNormVec = Geometry.m_vArrayVec[Geometry.m_lNormArrayIdx].m_vArray;
 				for (int i = 0;i < (int)vNormVec.size();i++)
@@ -745,7 +799,9 @@ namespace efe
 					{
 						DataVec[i].m_lVtx = vIndexArray[lTriangleAdd + i*lTriElements+Geometry.m_lPosIdxNum];
 						DataVec[i].m_lNorm = vIndexArray[lTriangleAdd + i*lTriElements+Geometry.m_lNormIdxNum];
-						DataVec[i].m_lTex = vIndexArray[lTriangleAdd + i*lTriElements+Geometry.m_lTexIdxNum];
+						// if there's tex coords
+						if (bHasTexCoords)
+							DataVec[i].m_lTex = vIndexArray[lTriangleAdd + i*lTriElements+Geometry.m_lTexIdxNum];
 					}
 
 					std::pair<tColladaTestTriMapIt, bool> TestPair = map_TestTris.insert(DataVec);
@@ -762,7 +818,7 @@ namespace efe
 						{
 							tString sParentName = pGeomNode->m_pParent ? pGeomNode->m_pParent->m_sName : "[none]";
 							Warning("Geometry '%s' in node '%s' with parent '%s' has two faces using the same vertices! Skipping face.\n",Geometry.m_sName, pGeomNode->m_sName.c_str(),
-																																			sParentName.c_str());
+								sParentName.c_str());
 						}
 						else
 							Warning("Geometry '%s' has two faces using the same vertices! Skipping face. (note: the geometry node could not be found either!)\n",Geometry.m_sId.c_str());
@@ -776,11 +832,15 @@ namespace efe
 
 			tFloatVec vPosVec;	vPosVec.resize(Geometry.m_vVertexVec.size()*4);
 			tFloatVec vNormVec;	vNormVec.resize(Geometry.m_vVertexVec.size()*3);
-			tFloatVec vTexVec;	vTexVec.resize(Geometry.m_vVertexVec.size()*3);
+			tFloatVec vTexVec;
+			if (bHasTexCoords)
+				vTexVec.resize(Geometry.m_vVertexVec.size()*3);
 
 			float *pPosData = &vPosVec[0];
 			float *pNormData = &vNormVec[0];
-			float *pTexData = &vTexVec[0];
+			float *pTexData;
+			if (bHasTexCoords)
+				pTexData = &vTexVec[0];
 
 			//Fill vectors
 			for (size_t i=0;i<Geometry.m_vVertexVec.size();i++)
@@ -796,22 +856,27 @@ namespace efe
 				pNormData[1] = vertex.norm.y;
 				pNormData[2] = vertex.norm.z;
 
-				pTexData[0] = vertex.tex.x;
-				pTexData[1] = vertex.tex.y;
-				pTexData[2] = vertex.tex.z;
+				if (bHasTexCoords)
+				{
+					pTexData[0] = vertex.tex.x;
+					pTexData[1] = vertex.tex.y;
+					pTexData[2] = vertex.tex.z;
+				}
 
 				pPosData += 4;
 				pNormData += 3;
 				pTexData += 3;
 			}
 
-			Geometry.m_vTangents.resize(Geometry.m_vVertexVec.size()*4);
-			cMath::CreateTriTangentVectors(&Geometry.m_vTangents[0],
-						&Geometry.m_vIndexVec[0], (int)Geometry.m_vIndexVec.size(),
-						&vPosVec[0],4,&vTexVec[0],&vNormVec[0],
-						(int)Geometry.m_vVertexVec.size());
+			if (bHasTexCoords)
+			{
+				Geometry.m_vTangents.resize(Geometry.m_vVertexVec.size()*4);
+				cMath::CreateTriTangentVectors(&Geometry.m_vTangents[0],
+					&Geometry.m_vIndexVec[0], (int)Geometry.m_vIndexVec.size(),
+					&vPosVec[0],4,&vTexVec[0],&vNormVec[0],
+					(int)Geometry.m_vVertexVec.size());
+			}
 		}
-
 	}
 
 	void cMeshLoaderCollada::LoadVertexData(TiXmlElement *a_pSourceElem, tVector3fVec &a_vVtxVec)
@@ -923,6 +988,13 @@ namespace efe
 						Sampler.m_sTimeArray = sSource;
 					else if (sSemantic == "OUTPUT")
 						Sampler.m_sValueArray = sSource;
+					else if (sSemantic == "INTERPOLATION")
+						Sampler.m_sInterpolationArray = sSource;
+					else if (sSemantic == "IN_TANGENT")
+						Sampler.m_sInTangentArray = sSource;
+					else if (sSemantic == "OUT_TANGENT")
+						Sampler.m_sOutTangentArray = sSource;
+
 				}
 				Anim.m_vSamplers.push_back(Sampler);
 			}
@@ -944,16 +1016,29 @@ namespace efe
 
 				Source.m_sId = cString::ToString(pSourceElem->Attribute("id"),"");
 
+				bool bStrings = false;
 				TiXmlElement *pArrayElem = pSourceElem->FirstChildElement("float_array");
 				if (pArrayElem == NULL)
-					continue;
+				{
+					pArrayElem = pSourceElem->FirstChildElement("Name_array");
+					bStrings = true;
+					if (pArrayElem == NULL)
+						continue;
+				}
 
 				int lCount = cString::ToInt(pArrayElem->Attribute("count"), 0);
 
-				Source.m_vValues.reserve(lCount);
+				if (!bStrings)
+					Source.m_vValues.reserve(lCount);
+				else
+					Source.m_vNameValues.reserve(lCount);
 
 				TiXmlText *pText = pArrayElem->FirstChild()->ToText();
-				cString::GetFloatVec(pText->Value(), Source.m_vValues);
+
+				if (!bStrings)
+					cString::GetFloatVec(pText->Value(), Source.m_vValues);
+				else
+					cString::GetStringVec(pText->Value(), Source.m_vNameValues);
 			}
 		}
 	}
@@ -1050,7 +1135,7 @@ namespace efe
 						}
 						else
 							Warning("Data element '%s' missing from newparam '%s'\n", sDataName.c_str(),
-																				newParam.m_sId.c_str());
+							newParam.m_sId.c_str());
 					}
 				}
 
@@ -1090,7 +1175,7 @@ namespace efe
 					{
 						Texture.m_sImage = "";
 						Warning("No diffuse texture effect element for effect '%s'! No file texture will be loaded.\n",
-									Texture.m_sId.c_str());
+							Texture.m_sId.c_str());
 					}
 				}
 				else
@@ -1174,7 +1259,7 @@ namespace efe
 				while (pInputElem)
 				{
 					tString sSemantic = cString::ToString(pInputElem->Attribute("semantic"),"");
-					
+
 					if (sSemantic == "TEXTURE")
 						Material.m_sTexture = cString::ToString(pInputElem->Attribute("source"),"");
 
@@ -1227,7 +1312,7 @@ namespace efe
 	}
 
 	void cMeshLoaderCollada::SplitVertices(cColladaGeometry &a_Geometry, tColladaExtraVtxListVec &a_vExtraVtxVec,
-							tVertexVec &a_vVertexVec, tUIntVec &a_vIndexVec)
+		tVertexVec &a_vVertexVec, tUIntVec &a_vIndexVec)
 	{
 		//Resize the extra array and the vertex array
 		int lVtxSize = (int)a_Geometry.m_vArrayVec[a_Geometry.m_lPosArrayIdx].m_vArray.size();

@@ -12,6 +12,8 @@ namespace efe
 #define MAX_VERTEXSTREAMS (8)
 #define MAX_TEXTUREUNITS (16)
 #define MAX_SAMPLERSTATES (16)
+#define MAX_BEZIERINTERPOLATIONITERATIONS (20)
+#define kApproximationEpsilonf (0.01f)
 #define MAX_NUM_OF_LIGHTS (30)
 
 	enum eMatrix
@@ -57,12 +59,22 @@ namespace efe
 		eFontAlign_LastEnum
 	};
 
+	enum eKeyFrameType
+	{
+		eKeyFrameType_Linear,
+		eKeyFrameType_Bezier,
+		eKeyFrameType_LastEnum
+	};
+
 	class cKeyFrame
 	{
 	public:
 		cVector3f trans;
 		cVector3f scale;
 		cQuaternion rotation;
+		eKeyFrameType type;
+		cVector2f outAnchor;
+		cVector2f inAnchor;
 		float time;
 	};
 

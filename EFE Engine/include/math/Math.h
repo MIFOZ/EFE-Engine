@@ -98,7 +98,7 @@ namespace efe
 		static float PlaneToPointDist(const cPlanef &a_Plane, const cVector3f &a_vVec);
 
 		static cQuaternion QuaternionSlerp(float a_fT, const cQuaternion &a_qA, const cQuaternion &a_qB,
-			bool a_bShortestpath);
+			bool a_bShortestPath);
 
 		static float QuaternionDot(const cQuaternion &a_qA, const cQuaternion &a_qB);
 

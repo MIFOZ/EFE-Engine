@@ -28,8 +28,6 @@ namespace efe
 		eTextureTarget_LastEnum
 	};
 
-//#define GetString(var) return tString(#var)
-
 	enum eTextureAddressMode
 	{
 		eTextureAddressMode_Wrap,

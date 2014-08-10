@@ -214,6 +214,9 @@ namespace efe
 		tString m_sId;
 		tString m_sTimeArray;
 		tString m_sValueArray;
+		tString m_sInterpolationArray;
+		tString m_sInTangentArray;
+		tString m_sOutTangentArray;
 
 		tString m_sTarget;
 	};
@@ -225,6 +228,7 @@ namespace efe
 	public:
 		tString m_sId;
 		tFloatVec m_vValues;
+		tStringVec m_vNameValues;
 	};
 
 	typedef std::vector<cColladaAnimSource> tColladaAnimSourceVec;
@@ -246,6 +250,16 @@ namespace efe
 			{
 				if (m_vSources[i].m_sId == a_sId)
 					return &m_vSources[i].m_vValues;
+			}
+			return NULL;
+		}
+
+		tStringVec *GetInterpolationVec(const tString &a_sId)
+		{
+			for (size_t i=0; i<m_vSources.size(); i++)
+			{
+				if (m_vSources[i].m_sId == a_sId)
+					return &m_vSources[i].m_vNameValues;
 			}
 			return NULL;
 		}

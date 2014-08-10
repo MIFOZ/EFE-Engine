@@ -82,7 +82,7 @@ namespace efe
 			}
 		}
 		else
-			Error("Couldn't find asset elemetnt!\n");
+			Error("Couldn't find asset element!\n");
 
 		TiXmlElement *pLibraryElem = pRootElem->FirstChildElement();
 		while (pLibraryElem)
@@ -142,13 +142,20 @@ namespace efe
 								else if (sName == "end_time") a_pColladaScene->m_fEndTime = fValue;
 							}
 						}
+						
 						a_pColladaScene->m_fDeltaTime = a_pColladaScene->m_fEndTime - a_pColladaScene->m_fStartTime;
 					}
 
 					Log("Anim Start: %f End: %f\n", a_pColladaScene->m_fStartTime, a_pColladaScene->m_fEndTime);
 				}
 				else
+				{
 					Warning("No 'extra scene' element found!\n");
+
+					a_pColladaScene->m_fStartTime = 0.0f;
+					a_pColladaScene->m_fEndTime = 0.0f;
+					a_pColladaScene->m_fDeltaTime = 0.0f;
+				}
 
 				TiXmlElement *pNodeElem = pSceneElem->FirstChildElement("node");
 				while (pNodeElem)

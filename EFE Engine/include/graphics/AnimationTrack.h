@@ -37,6 +37,8 @@ namespace efe
 		int GetNodeIndex() {return m_lNodeIdx;}
 
 	private:
+		float CalculateT(float a_fX0, float a_fX1, float a_fX2, float a_fX3, float a_fX);
+
 		tString m_sName;
 
 		int m_lNodeIdx;

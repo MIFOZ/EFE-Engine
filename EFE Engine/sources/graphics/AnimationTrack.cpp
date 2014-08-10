@@ -108,7 +108,24 @@ namespace efe
 			ResultKeyFrame.rotation = cMath::QuaternionSlerp(fT, pKeyFrameA->rotation, pKeyFrameB->rotation, true);
 
 			ResultKeyFrame.scale = pKeyFrameA->scale * (1 - fT) + pKeyFrameB->scale * fT;
-			ResultKeyFrame.trans = pKeyFrameA->trans * (1 - fT) + pKeyFrameB->trans * fT;
+
+			if (pKeyFrameA->type == eKeyFrameType_Linear)
+			{
+				ResultKeyFrame.trans = pKeyFrameA->trans * (1 - fT) + pKeyFrameB->trans * fT;
+			}
+			else if (pKeyFrameA->type == eKeyFrameType_Bezier)
+			{
+				for (int i=0; i<3; i++)
+				{
+					if (pKeyFrameB->trans.v[i] != 0.0f)
+					{
+						fT = CalculateT(pKeyFrameA->time, pKeyFrameA->outAnchor.x, pKeyFrameB->inAnchor.x, pKeyFrameB->time, a_fTime);
+						ResultKeyFrame.trans.v[i] = pKeyFrameA->trans.v[i]*pow(1-fT, 3) + pKeyFrameA->outAnchor.y*3*fT*pow(1-fT, 2) +
+							pKeyFrameB->inAnchor.y*3*pow(fT, 2)*(1-fT) + pKeyFrameB->trans.v[i]*pow(fT, 3);
+						break;
+					}
+				}
+			}
 		}
 
 		return ResultKeyFrame;
@@ -157,5 +174,58 @@ namespace efe
 		float fDeltaT = (*a_pKeyFrameB)->time - (*a_pKeyFrameA)->time;
 
 		return (a_fTime - (*a_pKeyFrameA)->time) / fDeltaT;
+	}
+
+	//--------------------------------------------------------------
+
+	float cAnimationTrack::CalculateT(float a_fX0, float a_fX1, float a_fX2, float a_fX3, float a_fX)
+	{
+		a_fX = cMath::Clamp(a_fX, 0.0f, m_fMaxFrameTime);
+
+		if (a_fX - a_fX0 < kEpsilonf)
+			return 0.0f; 
+
+		if (a_fX3 - a_fX < kEpsilonf)  
+			return 1.0f; 
+
+		float fU = 0.0f;
+		float fV = 1.0f; 
+
+		//iteratively apply subdivision to approach value atX
+		int lIt = 0; 
+		while (lIt < MAX_BEZIERINTERPOLATIONITERATIONS) { 
+
+			// de Casteljau Subdivision. 
+			double a = (a_fX0 + a_fX1)*0.5f; 
+			double b = (a_fX1 + a_fX2)*0.5f; 
+			double c = (a_fX2 + a_fX3)*0.5f; 
+			double d = (a + b)*0.5f; 
+			double e = (b + c)*0.5f; 
+			double f = (d + e)*0.5f; //this one is on the curve!
+
+			//The curve point is close enough to our wanted atX
+			if (fabs(f - a_fX) < kApproximationEpsilonf) 
+				return cMath::Saturate((fU + fV)*0.5f);
+
+			//dichotomy
+			if (f < a_fX)
+			{ 
+				a_fX0 = f; 
+				a_fX1 = e; 
+				a_fX2 = c; 
+				fU = (fU + fV)*0.5f; 
+			}
+			else
+			{ 
+				a_fX1 = a;
+				a_fX2 = d;
+				a_fX3 = f;
+				fV = (fU + fV)*0.5f; 
+			} 
+
+			lIt++; 
+		} 
+
+		return cMath::Saturate((fU + fV)*0.5f); 
 	}
 }
