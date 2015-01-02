@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="EFE Engine\sources\ai\AI.cpp" />
     <ClCompile Include="EFE Engine\sources\ai\AINodeGenerator.cpp" />
+    <ClCompile Include="EFE Engine\sources\ai\NeuralNetwork.cpp" />
     <ClCompile Include="EFE Engine\sources\game\Game.cpp" />
     <ClCompile Include="EFE Engine\sources\game\GameTypes.cpp" />
     <ClCompile Include="EFE Engine\sources\game\SaveGame.cpp" />
@@ -212,6 +213,7 @@
   <ItemGroup>
     <ClInclude Include="EFE Engine\include\ai\AI.h" />
     <ClInclude Include="EFE Engine\include\ai\AINodeGenerator.h" />
+    <ClInclude Include="EFE Engine\include\ai\NeuralNetwork.h" />
     <ClInclude Include="EFE Engine\include\EFE.h" />
     <ClInclude Include="EFE Engine\include\game\Game.h" />
     <ClInclude Include="EFE Engine\include\game\GameTypes.h" />
@@ -460,9 +462,10 @@
     <ClInclude Include="EFE Engine\sources\scene\ParameterWriter.cpp" />
     <ClInclude Include="OpenALSoundChannels.h" />
   </ItemGroup>
-  <PropertyGroup Label="Globals">
-    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals" />
   <PropertyGroup Label="Globals">
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{5E14423B-748B-7FBB-DFB9-C1165D56FC9D}</ProjectGuid>
@@ -472,12 +475,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -491,9 +494,9 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\Efim\Documents\Visual Studio 11\Projects\EFE-Engine\EFE Engine\include\impl\tinyXML;C:\Users\Efim\Downloads\c++\theora\libogg-1.3.0\libogg-1.3.0\include;C:\Users\Efim\Downloads\c++\theora\libtheora-1.1.1\libtheora-1.1.1\include;C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Include;C:\Users\Efim\Downloads\c++\fonts\ft246\freetype-2.4.6\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Mifoz\Documents\efe-engine dependencies\include;C:\Users\Mifoz\Documents\Visual Studio 2013\Projects\EFE-Engine\EFE Engine\include\impl\tinyXML;C:\Users\Efim\Downloads\c++\theora\libogg-1.3.0\libogg-1.3.0\include;C:\Users\Efim\Downloads\c++\theora\libtheora-1.1.1\libtheora-1.1.1\include;C:\Program Files\Windows Kits\8.1\Include\um;C:\Users\Mifoz\Documents\efe-engine dependencies\include\freetype;C:\Users\Mifoz\Documents\efe-engine dependencies\include\AL;$(IncludePath)</IncludePath>
     <OutDir>build\Debug</OutDir>
-    <LibraryPath>C:\Users\Efim\Downloads\c++\newton-dynamics-3.05\newton-dynamics-3.05\coreLibrary_300\projects\windows\project_vs2010\Win32\newton\Debug;C:\Users\Efim\Downloads\c++\PhysX-3.1.2_PC_VC10_SDK_Core\SDKs\lib\win32;C:\Users\Efim\Downloads\c++\angelscript_2.23.1\sdk\angelscript\lib;C:\Users\Efim\Downloads\c++\theora\libtheora-1.1.1\libtheora-1.1.1\win32\VS2008\Win32\Debug;C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Users\Efim\Downloads\c++\theora\libogg-1.3.0\libogg-1.3.0\win32\VS2010\Win32\Debug;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\Efim\Downloads\c++\newton-dynamics-3.05\newton-dynamics-3.05\coreLibrary_300\projects\windows\project_vs2010\Win32\newton\Debug;C:\Users\Efim\Downloads\c++\PhysX-3.1.2_PC_VC10_SDK_Core\SDKs\lib\win32;C:\Users\Mifoz\Documents\efe-engine dependencies\lib\win32;C:\Users\Efim\Downloads\c++\theora\libtheora-1.1.1\libtheora-1.1.1\win32\VS2008\Win32\Debug;C:\Program Files\Microsoft DirectX SDK %28June 2010%29\Lib\x86;C:\Users\Efim\Downloads\c++\theora\libogg-1.3.0\libogg-1.3.0\win32\VS2010\Win32\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -505,7 +508,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\Efim\Documents\Visual Studio 11\Projects\EFE-Engine\EFE Engine\include\impl\tinyXML;C:\Users\Efim\Downloads\c++\dependencies\dependencies\include\AL;C:\Users\Efim\Downloads\c++\dependencies\dependencies\include;C:\Users\Efim\Downloads\c++\OALWrapper-master\include;C:\Users\Efim\Documents\Visual Studio 11\Projects\EFE-Engine\EFE Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Efim\Documents\Visual Studio 11\Projects\EFE-Engine\EFE Engine\include\impl\tinyXML;C:\Users\Efim\Downloads\c++\dependencies\dependencies\include\AL;C:\Users\Efim\Downloads\c++\dependencies\dependencies\include;C:\Users\Efim\Downloads\c++\OALWrapper-master\include;C:\Users\Mifoz\Documents\Visual Studio 2013\Projects\EFE-Engine\EFE Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>

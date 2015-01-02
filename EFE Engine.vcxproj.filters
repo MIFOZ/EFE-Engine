@@ -462,15 +462,6 @@
     <ClCompile Include="EFE Engine\sources\resources\ScriptManager.cpp">
       <Filter>Impl\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="EFE Engine\sources\impl\scripthelper.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
-    <ClCompile Include="EFE Engine\sources\impl\scriptstdstring.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
-    <ClCompile Include="EFE Engine\sources\impl\scriptbuilder.cpp">
-      <Filter>Impl\System</Filter>
-    </ClCompile>
     <ClCompile Include="EFE Engine\sources\game\ScriptFunc.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -668,6 +659,18 @@
     </ClCompile>
     <ClCompile Include="EFE Engine\sources\graphics\GpuParameterContainer.cpp">
       <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\ai\NeuralNetwork.cpp">
+      <Filter>AI</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\scriptbuilder.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\scripthelper.cpp">
+      <Filter>Impl\System</Filter>
+    </ClCompile>
+    <ClCompile Include="EFE Engine\sources\impl\scriptstdstring.cpp">
+      <Filter>Impl\System</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1179,15 +1182,6 @@
     <ClInclude Include="EFE Engine\include\resources\ScriptManager.h">
       <Filter>Impl\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="EFE Engine\include\impl\scripthelper.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
-    <ClInclude Include="EFE Engine\include\impl\scriptstdstring.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
-    <ClInclude Include="EFE Engine\include\impl\scriptbuilder.h">
-      <Filter>Impl\System</Filter>
-    </ClInclude>
     <ClInclude Include="EFE Engine\include\game\ScriptFunc.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -1416,5 +1410,20 @@
     <ClInclude Include="EFE Engine\include\graphics\GpuParameterContainer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="EFE Engine\include\ai\NeuralNetwork.h">
+      <Filter>AI</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\scriptbuilder.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\scripthelper.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+    <ClInclude Include="EFE Engine\include\impl\scriptstdstring.h">
+      <Filter>Impl\System</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

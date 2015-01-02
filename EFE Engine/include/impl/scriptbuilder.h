@@ -57,11 +57,19 @@ public:
 	int StartNewModule(asIScriptEngine *engine, const char *moduleName);
 
 	// Load a script section from a file on disk
+	// Returns  1 if the file was included
+	//          0 if the file had already been included before
+	//         <0 on error
 	int AddSectionFromFile(const char *filename);
 
 	// Load a script section from memory
-	int AddSectionFromMemory(const char *scriptCode, 
-							 const char *sectionName = "");
+	// Returns  1 if the section was included
+	//          0 if a section with the same name had already been included before
+	//         <0 on error
+	int AddSectionFromMemory(const char *sectionName,
+							 const char *scriptCode, 
+							 unsigned int scriptLength = 0,
+							 int lineOffset = 0);
 
 	// Build the added script sections
 	int BuildModule();
@@ -75,12 +83,16 @@ public:
 	// Add a pre-processor define for conditional compilation
 	void DefineWord(const char *word);
 
+	// Enumerate included script sections
+	unsigned int GetSectionCount() const;
+	std::string  GetSectionName(unsigned int idx) const;
+
 #if AS_PROCESS_METADATA == 1
 	// Get metadata declared for class types and interfaces
 	const char *GetMetadataStringForType(int typeId);
 
 	// Get metadata declared for functions
-	const char *GetMetadataStringForFunc(int funcId);
+	const char *GetMetadataStringForFunc(asIScriptFunction *func);
 
 	// Get metadata declared for global variables
 	const char *GetMetadataStringForVar(int varIdx);
@@ -89,13 +101,13 @@ public:
 	const char *GetMetadataStringForTypeProperty(int typeId, int varIdx);
 
 	// Get metadata declared for class functions
-	const char *GetMetadataStringForTypeMethod(int typeId, int methodId);
+	const char *GetMetadataStringForTypeMethod(int typeId, asIScriptFunction *method);
 #endif
 
 protected:
 	void ClearAll();
 	int  Build();
-	int  ProcessScriptSection(const char *script, const char *sectionname);
+	int  ProcessScriptSection(const char *script, unsigned int length, const char *sectionname, int lineOffset);
 	int  LoadScriptSection(const char *filename);
 	bool IncludeIfNotAlreadyIncluded(const char *filename);
 
@@ -118,14 +130,16 @@ protected:
 	// Temporary structure for storing metadata and declaration
 	struct SMetadataDecl
 	{
-		SMetadataDecl(std::string m, std::string d, int t, std::string c) : metadata(m), declaration(d), type(t), parentClass(c) {}
+		SMetadataDecl(std::string m, std::string d, int t, std::string c, std::string ns) : metadata(m), declaration(d), type(t), parentClass(c), nameSpace(ns) {}
 		std::string metadata;
 		std::string declaration;
 		int         type;
 		std::string parentClass;
+		std::string nameSpace;
 	};
 	std::vector<SMetadataDecl> foundDeclarations;
 	std::string currentClass;
+	std::string currentNamespace;
 
 	// Storage of metadata for global declarations
 	std::map<int, std::string> typeMetadataMap;

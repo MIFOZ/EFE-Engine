@@ -20,8 +20,6 @@
 #include "resources/GpuProgramManager.h"
 #include "graphics/GpuProgram.h"
 
-#include <d3dx10.h>
-
 namespace efe
 {
 	//////////////////////////////////////////////////////////////

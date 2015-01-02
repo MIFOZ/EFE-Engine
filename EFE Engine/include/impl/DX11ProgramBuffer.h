@@ -3,7 +3,7 @@
 
 #include "graphics/GpuProgramBuffer.h"
 
-#include <D3DX11.h>
+#include <d3d11.h>
 
 #include <vector>
 

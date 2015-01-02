@@ -341,8 +341,8 @@ namespace efe
 		else return 0;
 	}
 
-	static float RayCastFilterFunc(const NewtonBody *const a_pNewtonBody, const NewtonCollision *const a_pShapeHit,
-		const float *const a_pNormalVec, int *const a_lCollisionID, void *const a_pUserData, float a_fIntersectParam)
+	static float RayCastFilterFunc(const NewtonBody *const a_pNewtonBody, const NewtonCollision *const a_pShapeHit, const float *const a_pHitPoint,
+		const float *const a_pNormalVec, long long a_lCollisionID, void *const a_pUserData, float a_fIntersectParam)
 	{
 		cPhysicsBodyNewton *pRigidBody = (cPhysicsBodyNewton*) NewtonBodyGetUserData(a_pNewtonBody);
 		if (pRigidBody->IsActive() == false) return 1;
@@ -382,9 +382,9 @@ namespace efe
 		g_pRayCallback = a_pCallback;
 
 		if (a_bUsePrefilter)
-			NewtonWorldRayCast(m_pNewtonWorld, a_vOrigin.v, a_vEnd.v, RayCastFilterFunc, NULL, RayCastPrefilterFunc);
+			NewtonWorldRayCast(m_pNewtonWorld, a_vOrigin.v, a_vEnd.v, RayCastFilterFunc, NULL, RayCastPrefilterFunc, 0);
 		else
-			NewtonWorldRayCast(m_pNewtonWorld, a_vOrigin.v, a_vEnd.v, RayCastFilterFunc, NULL, NULL);
+			NewtonWorldRayCast(m_pNewtonWorld, a_vOrigin.v, a_vEnd.v, RayCastFilterFunc, NULL, NULL, 0);
 	}
 
 	//--------------------------------------------------------------
@@ -428,8 +428,8 @@ namespace efe
 					cCollideShapeNewton *pSubShapeA = static_cast<cCollideShapeNewton*>(pNewtonShapeA->GetSubShape(a));
 					cCollideShapeNewton *pSubShapeB = static_cast<cCollideShapeNewton*>(pNewtonShapeB->GetSubShape(b));
 
-					int *AttrA[50];
-					int *AttrB[50];
+					dLong AttrA[50];
+					dLong AttrB[50];
 
 					int lNum = NewtonCollisionCollide(m_pNewtonWorld, a_lMaxPoints,
 						pSubShapeA->GetNewtonCollision(), &(mtxTransposeA.m[0][0]),
@@ -472,8 +472,8 @@ namespace efe
 		//Check NON compound collision
 		else
 		{
-			int *AttrA[50];
-			int *AttrB[50];
+			dLong AttrA[50];
+			dLong AttrB[50];
 
 			int lNum = NewtonCollisionCollide(m_pNewtonWorld, a_lMaxPoints,
 				pNewtonShapeA->GetNewtonCollision(), &(mtxTransposeA.m[0][0]),

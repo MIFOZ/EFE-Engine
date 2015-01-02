@@ -5,7 +5,7 @@
 
 #include "impl/DXFontData.h"
 
-#pragma comment(lib, "freetype246_D.lib")
+#pragma comment(lib, "freetype255d.lib")
 
 #include <freetype/ftglyph.h>
 #include <freetype/ftoutln.h>
@@ -97,9 +97,6 @@ namespace efe
 			int lPage = cString::ToInt(pCharElem->Attribute("page"),0);
 
 			cDX11Bitmap2D *pSourceBitmap = vBitmaps[lPage];
-
-			//POINT vSize = {lW, lH};
-			//cDXBitmap2D *pBmp = static_cast<cDXBitmap2D*> (m_pLowLevelGraphics->
 		}
 		return NULL;
 	}

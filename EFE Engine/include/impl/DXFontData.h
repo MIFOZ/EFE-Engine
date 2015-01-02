@@ -2,10 +2,9 @@
 #define EFE_D3D11_FONTDATA_H
 
 #include "graphics/FontData.h"
-#include <ft2build.h>
-#include <freetype/freetype.h>
 
-//struct FT_Face;
+#include <freetype/ft2build.h>
+#include <freetype/freetype.h>
 
 namespace efe
 {

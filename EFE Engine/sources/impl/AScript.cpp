@@ -75,7 +75,8 @@ namespace efe
 
 	int cAScript::GetFuncHandle(const tString &a_sFunc)
 	{
-		return m_pScriptEngine->GetModule(m_sModuleName.c_str(), asGM_CREATE_IF_NOT_EXISTS)->GetFunctionIdByName(a_sFunc.c_str());
+		return 0;
+		//return m_pScriptEngine->GetModule(m_sModuleName.c_str(), asGM_CREATE_IF_NOT_EXISTS)->GetFunctionIdByName(a_sFunc.c_str());
 	}
 
 	//--------------------------------------------------------------
@@ -99,7 +100,7 @@ namespace efe
 
 	bool cAScript::Run(int a_lHandle)
 	{
-		m_pContext->Prepare(a_lHandle);
+		//m_pContext->Prepare(a_lHandle);
 
 		m_pContext->Execute();
 

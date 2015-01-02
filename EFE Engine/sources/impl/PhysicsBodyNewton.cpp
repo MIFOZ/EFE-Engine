@@ -363,7 +363,7 @@ namespace efe
 
 	void cPhysicsBodyNewton::DeleteLowLevel()
 	{
-		NewtonDestroyBody(m_pNewtonWorld, m_pNewtonBody);
+		NewtonDestroyBody(m_pNewtonBody);
 
 		efeDelete(m_pCallback);
 	}
@@ -425,12 +425,12 @@ namespace efe
 		if (pRigidBody->m_Buoyancy.m_bActive)
 		{
 			g_SurfacePlane = pRigidBody->m_Buoyancy.m_Surface;
-			NewtonBodyAddBuoyancyForce(a_pBody, 
+			/*NewtonBodyAddBuoyancyForce(a_pBody, 
 				pRigidBody->m_Buoyancy.m_fDensity,
 				pRigidBody->m_Buoyancy.m_fLinearViscosity,
 				pRigidBody->m_Buoyancy.m_fAngularViscosity,
 				vGravity.v, BuoyancyPlaneCallback,
-				pRigidBody);
+				pRigidBody);*/
 		}
 
 		NewtonBodyAddForce(a_pBody, pRigidBody->m_vTotalForce.v);
